@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router,Routes, Route, Link } from "react-router-dom";
+
+import  {Header}  from "./components/Header/Header";
+import HomeScreen from "./components/pages/HomeScreen";
+import ShopScreen from "./components/pages/ShopScreen";
+import CartScreen from "./components/pages/CartScreen";
+import SuccessScreen from "./components/pages/SuccessScreen";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+    <Router>
+    <Header/>  
+      <ul>
+        <Link to = "/">HomeScreen</Link>
+        <Link to = "/shopscreen">ShopScreen</Link>
+        <Link to = "/cartscreen">CartScreen</Link>
+        <Link to = "/sucessscreen">SuccessScreen</Link>
+        
+      </ul>
+      <Routes> 
+        <Route exact path='/'element={<HomeScreen/>}>
+                  
+        </Route>
+        <Route exact path='/cartscreen'element={<CartScreen/>}>
+                  
+        </Route>
+
+        <Route exact path='/shopscreen'element = {<ShopScreen/>}>
+                  
+        </Route>       
+       
+        <Route exact path='/sucessscreen'element = {<SuccessScreen/>}>
+                  
+        </Route>
+
+
+      </Routes>
+      <p>Footer</p>
+    </Router>
   );
 }
 
